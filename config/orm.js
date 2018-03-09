@@ -43,6 +43,7 @@ function objToSql(ob) {
 var orm = {
     all: function(tableInput, cb) {
         var queryString = "SELECT * FROM " + tableInput + ";";
+        //error handling & rendering
         connection.query(queryString, function(err, result) {
             if (err) {
                 throw err;
@@ -51,24 +52,16 @@ var orm = {
         });
     },
     create: function(table, cols, vals, cb) {
-        var queryString = "INSERT INTO " + table;
-
-        queryString += " (";
-        queryString += cols.toString();
-        queryString += ") ";
-        queryString += "VALUES (";
-        queryString += printQuestionMarks(vals.length);
-        queryString += ") ";
-
-        console.log(queryString);
-
-        connection.query(queryString, vals, function(err, result) {
+        let queryString = "INSERT INTO " + table + " (" + cols + ") VALUES ('" + vals + "');";
+        //error handling & rendering
+        connection.query(queryString, function(err, result) {
             if (err) {
                 throw err;
             }
-
             cb(result);
         });
+
+
     },
     // An example of objColVals would be {name: panther, sleepy: true}
     update: function(table, objColVals, condition, cb) {
