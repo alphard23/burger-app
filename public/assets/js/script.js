@@ -21,7 +21,7 @@ $(function() {
         );
     });
 
-    $("#submit-burger").on("submit", function(event) {
+    $("#submit-burger").on("click", function(event) {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
         debugger;
@@ -40,5 +40,4 @@ $(function() {
             }
         );
     });
-
 });
