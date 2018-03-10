@@ -6,7 +6,7 @@
   {{#each burgers}}
     {{#unless devoured}}
       <p>{{burger_name}}</p>
-      <button class="btn btn-primary data-id="{{id}}>Eat this burger.</button>
+      <button class="btn btn-primary devour" data-id={{id}}>Eat this burger.</button>
     {{/unless}}
   {{/each}}
 </ul>
